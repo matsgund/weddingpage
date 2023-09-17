@@ -22,8 +22,9 @@ const Navbar : React.FC = () => {
             enter="ease-in duration-[3000ms] transition-all"
             enterFrom="opacity-0"
             enterTo="opacity-100"
+            className="fixed inset-x-0 top-0 z-50"
         >
-            <header className="absolute inset-x-0 top-0 z-50">
+            <header className=" top-0">
                 <nav className="flex items-center justify-end p-12 lg:px-24" aria-label="Global">
                     <div className="flex lg:hidden">
                         <button
@@ -50,7 +51,6 @@ const Navbar : React.FC = () => {
                         </a>
                     </div>
                 </nav>
-                
                 <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                     <div className="fixed inset-0 z-50" />
                         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-12 py-12 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">

@@ -11,6 +11,8 @@ export default {
       fontFamily: {
         'greatVibes': ['GreatVibes-Regular', 'cursive'],
         'ralewaRegular': ['Raleway-Regular', 'sans-serif'],
+        'cmunbi': ['cmunbi', 'sans-serif'],
+        'cmunrm': ['cmunrm', 'sans-serif'],
 
       },
       backgroundImage: {
