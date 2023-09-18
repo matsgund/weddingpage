@@ -1,7 +1,4 @@
-import Navbar from "@/components/navbar";
 import { Transition } from '@headlessui/react'
-import { useEffect, useState } from "react";
-
 
 const HeroSection: React.FC = () => {
 
@@ -17,7 +14,7 @@ const HeroSection: React.FC = () => {
     >
       {/* Video Background */}
       <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
-        <video className="min-w-full min-h-full absolute object-cover" src="src/assets/videos/klipp2.mp4" type="video/mp4" autoPlay muted loop></video>
+        <video className="min-w-full min-h-full absolute object-cover" src="src/assets/videos/klipp2.mp4" autoPlay muted loop></video>
     </div>
       <div className="relative z-10 px-6 lg:px-8">
         <div className="flex items-center w-fit min-h-screen m-auto max-w-2xl py-28 sm:py-48 lg:py-56">
