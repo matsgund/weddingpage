@@ -48,3 +48,26 @@ body {
 .video-content {
   z-index: 2;
 }
+
+/* Global typography */
+
+.h1 {
+  @apply text-5xl tracking-tight sm:text-9xl font-cmunrm text-white;
+}
+
+.h2 {
+  @apply font-cmunrm text-3xl tracking-tight sm:text-4xl;
+}
+
+.h3 {
+  @apply text-2xl font-bold;
+}
+
+.h4 {
+  @apply text-xl font-bold;
+}
+
+.p {
+  @apply font-ralewaRegular font-light sm:text-base ;
+}
+

@@ -44,17 +44,17 @@ const HeroSection: React.FC = () => {
               enter="ease-in duration-[1000ms] transition-all delay-[300ms]"
               enterFrom="opacity-0 translate-y-12"
               enterTo="opacity-100 translate-y-0"
-              className="text-5xl tracking-tight sm:text-9xl font-cmunrm text-white"
+              className="h1"
             >
               Anette & Mats
             </Transition.Child>
             <div className="justify-center">
               <Transition.Child
-                as="h3"
+                as="h2"
                 enter="ease-in duration-[1000ms] transition-all delay-[200ms]"
                 enterFrom="opacity-0 translate-y-12"
                 enterTo="opacity-100 translate-y-0"
-                className="font-cmunrm text-3xl tracking-tight text-white sm:text-4xl py-4"
+                className="h2 text-white py-4"
               >
                 25/26 Mai 2024
               </Transition.Child>
