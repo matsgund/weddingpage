@@ -121,7 +121,7 @@ const Navbar : React.FC = () => {
                                             <Link
                                                 onClick={() => setMobileMenuOpen(false)}
                                                 key={item.name}
-                                                className="-mx-3 block rounded-lg px-3 py-2 text-base font-ralewaRegular font-medium leading-7 text-gray-900 hover:text-primary"
+                                                className="-mx-3 block rounded-md px-3 py-2 text-base font-ralewaRegular font-medium leading-7 text-gray-900 hover:text-primary"
                                                 // activeClass="underline underline-offset-8 text-indigo-600"
                                                 spy={true}
                                                 to={item.link.slice(1)}
@@ -136,7 +136,7 @@ const Navbar : React.FC = () => {
                                     <div className="py-6">
                                         <span
                                             onClick={() => {setMobileMenuOpen(false); setGoogleFormModalOpen(true);}}   
-                                            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-ralewaRegular font-medium leading-7 text-gray-900 hover:text-primary"
+                                            className="-mx-3 block rounded-md px-3 py-2.5 text-base font-ralewaRegular font-medium leading-7 text-gray-900 hover:text-primary"
                                             // activeClass="underline underline-offset-8 text-indigo-600"
                                             
                                         >

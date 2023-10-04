@@ -57,14 +57,14 @@ const GallerySection : React.FC = () => {
 
     return (
         <Element name="gallery">
-            <div className="bg-quaternary mx-auto py-12 lg:py-36 w-full max-w-7x">
+            <div className="bg-quaternary mx-auto py-12 px-4 lg:py-36 w-full max-w-7x">
                 <div className="mx-auto max-w-2xl text-center">
                         <h2 className="mb-4 text-4xl tracking-tight text-white font-cmunrm">
                             Bildegalleri
                         </h2>
-                        <p className="text-sm text-gray-200 font-bold uppercase tracking-widest font-ralewaRegular">Her kommer bildene fra vielsen og festen</p>
+                        <p className="p text-gray-200 font-bold uppercase">Her kommer bildene fra vielsen og festen</p>
                 </div>
-                <div className='mx-auto my-12 sm:my-20 w-2/3'>
+                <div className='mx-auto my-12 sm:my-20 sm:w-2/3'>
                     <PhotoAlbum layout="columns" photos={photos} />
                 </div>
             </div>

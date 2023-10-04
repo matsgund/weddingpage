@@ -60,14 +60,18 @@ body {
 }
 
 .h3 {
-  @apply text-2xl font-bold;
+  @apply text-2xl font-ralewaRegular;
 }
 
 .h4 {
   @apply text-xl font-bold;
 }
 
+.h5 {
+  @apply text-lg font-bold;
+}
+
 .p {
-  @apply font-ralewaRegular font-light sm:text-base ;
+  @apply font-ralewaRegular font-light text-base ;
 }
 

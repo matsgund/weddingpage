@@ -84,34 +84,36 @@ const InfoSection : React.FC = () => {
 
                     {/* :TITLE CONTAINER */}
                     <div className="mx-auto max-w-2xl text-center">
-                    <h2 className="mb-4 text-4xl tracking-tight text-white font-cmunrm">
-                        Praktisk informasjon
-                    </h2>
-                    <p className="text-sm text-white font-bold uppercase tracking-widest font-ralewaRegular">Tidsskjema</p>
+                        <h2 className="h2 mb-4 text-white">
+                            Praktisk informasjon
+                        </h2>
+                        <h4 className="h4 text-white uppercase tracking-widest">
+                            Tidsskjema
+                        </h4>
                     </div>
 
 
                     {/* :SCHEDULE */}
-                    <div className="mt-12 sm:mt-20 flex flex-col">
+                    <div className="p-4 mt-12 sm:mt-20 flex flex-col">
                     {schedule.map(day => (
                         <div key={day.day} >
                         {/* ::Day */}
                         <span className="flex items-center py-3 px-5 bg-tertiary text-white rounded-md">
                             <CalendarIcon className="mr-4 w-6 h-6" />
-                            <h3 className="text-sm font-ralewaRegular font-semibold uppercase tracking-wide">{day.day}</h3>
+                            <p className="p uppercase tracking-wide">{day.day}</p>
                         </span>
                         {/* ::Events */}
-                        <ul className="py-1 flex flex-col">
+                        <ul className="py-6 flex flex-col">
                             {day.events.map(event => (
-                                <li key={event.id} className="group py-3 px-2 sm:px-5 flex items-center">
+                                <li key={event.id} className="group py-6 px-2 sm:px-5 flex items-center">
                                 {/* :::time container */}
                                 <div className="flex-shrink-0 mr-5 sm:mr-20 px-3 py-2 flex flex-col bg-white rounded-md">
-                                    <span className="text-sm sm:text-base font-ralewaRegular text-primary">{event.time}</span>
+                                    <span className="text-sm sm:text-base font-ralewaRegular text-tertiary">{event.time}</span>
                                 </div>
                                 {/* :::details container */}
                                 <div className="col-span-7 sm:col-span-6 px-3">
-                                    <p className="font-ralewaRegular text-white font-bold uppercase">{event.name}</p>
-                                    <p className="mt-2 text-xs sm:text-sm text-white font-ralewaRegular">{event.details}</p>
+                                    <p className="p text-white uppercase">{event.name}</p>
+                                    <p className="p mt-2 text-xs sm:text-sm text-white">{event.details}</p>
                                 </div>
                                 </li>
                             ))
@@ -123,11 +125,11 @@ const InfoSection : React.FC = () => {
                     </div>
                     <hr className="h-px my-8 bg-gray-200 border-0 mt-12 sm:mt-20"></hr>
                     <div className='mt-12 sm:mt-20'>
-                        <p className="text-sm text-white text-center font-bold uppercase tracking-widest font-ralewaRegular">Lokasjon og servering</p>
+                        <h4 className="h4 text-white text-center uppercase tracking-widest">Lokasjon og servering</h4>
                     </div>
                     <section className=" text-white mt-12 sm:mt-20 ">
                         <div className="container flex flex-col-reverse mx-auto lg:flex-row">
-                            <div className="flex flex-col px-6 py-8 space-y-6 rounded-sm sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5">
+                            <div className="flex flex-col px-6 py-8 space-y-6 rounded-md sm:p-8 lg:p-12 lg:w-1/2 xl:w-2/5">
                                 {locationInfo.map((element) => (
                                     <div key={element.id} className="flex space-x-2 sm:space-x-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
@@ -142,27 +144,29 @@ const InfoSection : React.FC = () => {
                             </div>
                             <div className="lg:w-1/2 xl:w-3/5 ">
                                 <div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
-                                    <img src={villaImage} alt="" className="rounded shadow-lg sm:min-h-96" />
+                                    <img src={villaImage} alt="" className="rounded-md shadow-lg sm:min-h-96" />
                                 </div>
                             </div>
                         </div>
                     </section>
                     <hr className="h-px my-8 bg-gray-200 border-0 mt-12 sm:mt-20"></hr>
                     <div className='mt-12 sm:mt-20'>
-                        <p className="text-sm text-white text-center font-bold uppercase tracking-widest font-ralewaRegular">Transport</p>
+                        <h4 className="h4 text-white text-center uppercase tracking-widest">Transport</h4>
                     </div>
                     <div className="p-5 mx-auto sm:p-10 md:p-16">
-                    <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
+                    <div className="flex flex-col max-w-3xl mx-auto overflow-hidden -md">
                         <GoogleMapRoute/>
                         {/* <img src="https://source.unsplash.com/random/480x360" alt="" className="w-full h-60 sm:h-96 " /> */}
                         <div className="p-6 pb-12 m-4 mx-auto -mt-16 space-y-6 w-2/3 lg:rounded-md bg-tertiary ">
                             <div className="space-y-2">
-                            <h2 className="mb-4 text-4xl tracking-tight text-white font-cmunrm">
+                            <h4 className="h4 mb-4 tracking-tight text-white">
                                Transport søndag 26. mai
-                            </h2>
+                            </h4>
                             </div>
                             <div>
-                                <p className="text-sm text-white font-ralewaRegular">Vi vil tilby transport fra sentrum til Villa Lokøy på søndag 26. mai. Maxitaxi vil kjøre fra Festplassen kl. 13:00. Det vil også bli tilbudt transport tilbake til sentrum fra Villa Lokøy kl. 18:30. </p>
+                                <p className="p text-white">
+                                    Vi vil tilby transport fra sentrum til Villa Lokøy på søndag 26. mai. Maxitaxi vil kjøre fra Festplassen kl. 13:00. Det vil også bli tilbudt transport tilbake til sentrum fra Villa Lokøy kl. 18:30. 
+                                </p>
                             </div>
                         </div>
                     </div>

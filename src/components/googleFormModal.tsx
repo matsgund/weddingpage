@@ -16,9 +16,9 @@ const GoogleFormModal : React.FC<GoogleFormModalProps> = ( { googleFormModalOpen
             onClose={() => setGoogleFormModalOpen(false)}
             className="relative z-50 w-screen h-screen overflow-y-auto"
       >
-        <div className="fixed inset-0 flex w-screen items-center justify-center rounded">
+        <div className="fixed inset-0 flex w-screen items-center justify-center rounded-md">
             {/* we need a back button here */}
-          <Dialog.Panel className="w-full h-full rounded pb-20 bg-tertiary sm:p-12">
+          <Dialog.Panel className="w-full h-full rounded-md pb-20 bg-tertiary sm:p-12">
             <div className='flex justify-end p-2'>
               <XMarkIcon className="h-8 w-8 cursor-pointer" aria-hidden="true"   onClick={() => setGoogleFormModalOpen(false)}/>
             </div>        
