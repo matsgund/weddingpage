@@ -91,8 +91,6 @@ const InfoSection : React.FC = () => {
                             Tidsskjema
                         </h4>
                     </div>
-
-
                     {/* :SCHEDULE */}
                     <div className="p-4 mt-12 sm:mt-20 flex flex-col">
                     {schedule.map(day => (

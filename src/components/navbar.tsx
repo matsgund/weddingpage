@@ -1,4 +1,4 @@
-import {  useState } from 'react'
+import {  useState, useEffect } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Button from "@/components/button";
@@ -6,6 +6,8 @@ import { Transition } from '@headlessui/react';
 import heartIcon from '@/assets/images/ico/heart.ico';
 import { Link } from 'react-scroll';
 import GoogleFormModal from '@/components/googleFormModal';
+import { useScroll } from '@/context/scrollContext';
+
 
 interface NavigationItem {
     name: string;
@@ -24,6 +26,17 @@ const Navbar : React.FC = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [googleFormModalOpen, setGoogleFormModalOpen] = useState(false);
+    const [navScrollStyling, setNavBackground] = useState("bg-transparent p-12");
+    const { isInView } = useScroll();
+
+
+    useEffect(() => {
+        if (isInView) {
+            setNavBackground("bg-transparent p-12");
+        } else {
+            setNavBackground("bg-black bg-opacity-60 p-2.5");
+        }
+    }, [isInView]);
 
   return (
             <header className="fixed inset-x-0 top-0 z-50">
@@ -39,7 +52,7 @@ const Navbar : React.FC = () => {
                     enterFrom="opacity-0"
                     enterTo="opacity-100"
                 >
-                    <nav className="flex items-center justify-end p-12 lg:px-24" aria-label="Global">
+                    <nav className={`flex items-center justify-end lg:px-24 ${navScrollStyling}`} aria-label="Global">
                         <div className="flex lg:hidden">
                             <button
                             type="button"
@@ -137,7 +150,6 @@ const Navbar : React.FC = () => {
                                         <span
                                             onClick={() => {setMobileMenuOpen(false); setGoogleFormModalOpen(true);}}   
                                             className="-mx-3 block rounded-md px-3 py-2.5 text-base font-ralewaRegular font-medium leading-7 text-gray-900 hover:text-primary"
-                                            // activeClass="underline underline-offset-8 text-indigo-600"
                                             
                                         >
                                            Påmelding

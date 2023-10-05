@@ -1,20 +1,24 @@
 import { Transition } from '@headlessui/react'
 import videoClip from '@/assets/videos/heroClip.mp4';
 import posterImage from '@/assets/images/jpg/heroImage3.jpg';
-import { useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
+import { useScroll } from '@/context/scrollContext';
 
 const HeroSection: React.FC = () => {
 
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const { ref, inView, entry } = useInView({
+    threshold: 0,
+  });
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
-  }, []);
+  const { setIsInView } = useScroll();
+  setIsInView(inView);
+
+  console.log(inView + "inView");
+  console.log(entry + "entry");
 
   return (
     <Transition.Root
+      ref={ref}
       appear={true}
       show={true}
       as="div"
@@ -26,7 +30,6 @@ const HeroSection: React.FC = () => {
       {/* Video Background */}
     <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
         <video 
-          ref={videoRef} 
           className="min-w-full min-h-full absolute object-cover"
           autoPlay 
           muted 
