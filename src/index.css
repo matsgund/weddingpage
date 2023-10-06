@@ -64,11 +64,11 @@ body {
 }
 
 .h4 {
-  @apply text-xl font-bold;
+  @apply text-xl tracking-tight ;
 }
 
 .h5 {
-  @apply text-lg font-bold;
+  @apply text-lg tracking-tight;
 }
 
 .p {

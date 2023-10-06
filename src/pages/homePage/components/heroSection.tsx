@@ -6,15 +6,12 @@ import { useScroll } from '@/context/scrollContext';
 
 const HeroSection: React.FC = () => {
 
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     threshold: 0,
   });
 
   const { setIsInView } = useScroll();
   setIsInView(inView);
-
-  console.log(inView + "inView");
-  console.log(entry + "entry");
 
   return (
     <Transition.Root
