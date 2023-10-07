@@ -1,5 +1,5 @@
 import { Transition } from '@headlessui/react'
-import videoClip from '@/assets/videos/heroClip.mp4';
+import videoClip from '@/assets/videos/heroClip2.mp4';
 import posterImage from '@/assets/images/jpg/heroImage3.jpg';
 import { useInView } from 'react-intersection-observer';
 import { useScroll } from '@/context/scrollContext';

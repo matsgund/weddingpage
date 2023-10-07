@@ -52,7 +52,7 @@ body {
 /* Global typography */
 
 .h1 {
-  @apply text-5xl tracking-tight sm:text-9xl font-cmunrm text-white;
+  @apply text-5xl tracking-tight sm:text-8xl font-cmunrm text-white;
 }
 
 .h2 {
