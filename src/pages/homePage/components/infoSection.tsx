@@ -202,7 +202,7 @@ const InfoSection : React.FC = () => {
                                     </h4>
                                     </div>
                                     <div>
-                                        <p className="p text-white">
+                                        <p className="p text-white z-10">
                                             Vi vil tilby transport fra Skjoldskiftet til Villa Lokøy på søndag 26. mai. 
                                             Maxitaxi vil kjøre fra bensinstasjonen i Skjoldskiftet kl. 13:00. 
                                             Det vil også bli tilbudt transport tilbake til sentrum fra Villa Lokøy kl. 19:30. Det er også mulig å parkere på stedet for de som ønsker å kjøre selv. 
