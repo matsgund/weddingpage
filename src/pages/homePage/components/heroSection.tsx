@@ -1,7 +1,8 @@
 import videoClip from '@/assets/videos/heroClip2.mp4';
-import posterImage from '@/assets/images/jpg/heroImage3.jpg';
 import { useInView } from 'react-intersection-observer';
 import { useScroll } from '@/context/scrollContext';
+import { useEffect } from 'react';
+import { Fade } from "react-awesome-reveal";
 
 const HeroSection: React.FC = () => {
 
@@ -11,32 +12,44 @@ const HeroSection: React.FC = () => {
   });
 
   const { setIsInView } = useScroll();
-  setIsInView(inView);
+
+  useEffect(() => {
+    setIsInView(inView);
+  }, [inView, setIsInView]);
 
   return (
-    <div ref={ref} className='min-h-screen relative'>
+    <div ref={ref} className='relative h-full w-full'>
       {/* Video Background */}
-    <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
-        <video 
-          className="min-w-full min-h-full absolute object-cover"
-          autoPlay 
-          muted 
-          loop
-          poster={posterImage}
-          >  
-           <source src={videoClip} type="video/mp4" />        
+    <div className="w-full h-full absolute top-0 right-0 bottom-0 left-0 z-10">
+        <video aria-hidden="true" 
+          className="relativ z-20 h-full w-full object-cover pointer visible opacity-80" 
+          autoPlay={true} 
+          loop={true}
+          playsInline={true}
+          muted>
+          <source src={videoClip} type="video/mp4"/> Your browser does not support the video tag. 
         </video>
     </div>
       <div className="relative z-10 px-6 lg:px-8">
         <div className="flex items-center w-fit min-h-screen m-auto max-w-2xl py-28 sm:py-48 lg:py-56">
           <div className="text-center">
-              <h1 className='h1'>
-                Anette & Mats
-              </h1>
+              <Fade 
+                  direction="up" 
+                  duration={3000}
+                  triggerOnce={true}>
+                <h1 className='h1'>
+                  Anette & Mats
+                </h1>
+              </Fade>
             <div className="justify-center">
-                <h2 className='h2 text-white py-4'>
-                  25/26 Mai 2024
-                </h2>
+              <Fade 
+               
+                duration={6000}
+                triggerOnce={true}>
+                  <h2 className='h2 text-white py-4'>
+                    25/26 Mai 2024
+                  </h2>
+                </Fade>
             </div>
           </div>
         </div>
