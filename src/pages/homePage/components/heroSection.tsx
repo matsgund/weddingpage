@@ -1,4 +1,4 @@
-import videoClip from '@/assets/videos/heroKlipp.mp4';
+import videoClip from '@/assets/videos/heroClip.mp4';
 import { useInView } from 'react-intersection-observer';
 import { useScroll } from '@/context/scrollContext';
 import { useEffect } from 'react';
