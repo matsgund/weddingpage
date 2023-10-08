@@ -6,7 +6,8 @@ import { Fade } from "react-awesome-reveal";
 
 const schedule = [
     {
-      day:"Lørdag 25. mai", 
+      day:"Lørdag 25. mai",
+      hr: true, 
       events: [
         { 
           id: 1, 
@@ -14,12 +15,13 @@ const schedule = [
           href:"#link", 
           time: "15:30", 
           details: "Fanavegen 320",
-          member: "Alice Doe"
+          member: "Alice Doe",
         },
       ]
     },
     {
       day:"Søndag 26. mai", 
+      hr: false,
       events: [
         { 
           id: 1, 
@@ -85,7 +87,7 @@ const InfoSection : React.FC = () => {
 
                     {/* :TITLE CONTAINER */}
                     <Fade 
-                        duration={2000}
+                        duration={3000}
                         triggerOnce={true}>    
                         <div className="mx-auto max-w-2xl text-center">
                             <h2 className="h2 mb-4 text-white">
@@ -98,16 +100,15 @@ const InfoSection : React.FC = () => {
                     </Fade>
                         {/* :SCHEDULE */}
                     <Fade 
-                       
                         duration={3000}
                         triggerOnce={true}>      
                         <div className="p-4 mt-12 sm:mt-20 flex flex-col">
                             {schedule.map(day => (
                                 <div key={day.day} >
                                     {/* ::Day */}
-                                    <span className="flex items-center py-3 px-5 bg-tertiary text-white rounded-md">
+                                    <span className="flex items-center py-3 px-5 text-white rounded-md">
                                         <CalendarIcon className="mr-4 w-6 h-6" />
-                                        <p className="p uppercase tracking-wide">{day.day}</p>
+                                        <p className="p uppercase tracking-wide border-b-2 border-tertiary">{day.day}</p>
                                     </span>
                                     {/* ::Events */}
                                     <ul className="py-6 flex flex-col">
@@ -125,6 +126,7 @@ const InfoSection : React.FC = () => {
                                             </li>
                                         ))}
                                     </ul>
+                                    { day.hr && <hr className="h-px my-8 bg-gray-200 border-0"></hr>}
                                 </div>
                                 ))
                             }
