@@ -11,11 +11,11 @@ const schedule = [
       events: [
         { 
           id: 1, 
-          name: "Vielse - Fana Kirke", 
+          name: "Vielse i Fana kirke", 
           href:"#link", 
           time: "15:30", 
           details: "Fanavegen 320",
-          member: "Alice Doe",
+        
         },
       ]
     },
@@ -25,35 +25,33 @@ const schedule = [
       events: [
         { 
           id: 1, 
-          name: "Felles transport fra byn", 
+          name: "Felles transport fra Skjoldskiftet", 
           href:"#link", 
           time: "13:00", 
-          details: "For de som ønsker transport fra sentrum. Maxitaxi fra Festplassen.",
-          member: "John Doe"
+          details: "For de som ønsker transport setter vi opp maxitaxi fra bensinstasjonen ved Skjoldskiftet.",
+         
         },
         { 
           id: 2, 
           name: "Velkomstdrink", 
           href:"#link", 
           time: "14:00", 
-          details: "Da er vi i gang.",
+          details: "Velkommen!",
           member: "Alice Doe"
         },
         {
             id: 3,
-            name: "Middag",
+            name: "Servering",
             href:"#link",
             time: "14:30",
-            details: "Matservering starter",
-            member: "John Doe"
+            details: "Det blir servert mat og drikke med og uten alkohol.",
         },
         {
             id:4,
-            name: "Transport tilbake til byn",
+            name: "Transport tilbake til Skjoldskiftet",
             href:"#link",
-            time: "18:30",
-            details: "For de som ønskjer transport tilbake til byn. Maxitaxi til Festplassen.",
-            member: "John Doe"
+            time: "19:30",
+            details: "For de som ønsker transport tilbake til Skjoldskiftet.",
         
         }
       ]
@@ -62,17 +60,22 @@ const schedule = [
 
   const locationInfo = [
     {   id: 1,
-        headline: "Villa",
-        text: "Villa Lokøy ligger på Lokøy, vest for Bergen, og er et populært valg for gjester som søker privatliv, komfort og uforglemmelige opplevelser. Fra hovedsuiten kan man observere havørner mens man nyter en kopp kaffe. Villaen er kjent for sin luksuriøse atmosfære og tilbyr en unik opplevelse ved den norske kysten"
-    },
-    {   id: 2,     
-        headline: "Parkering",
-        text: "Gratis parkering på stedet"
+        headline: "Sted",
+        text: "Vi har leid Villa Lokøy for anlednigen. Denne ligger vest for Bergen i Lokøyvågen 68. Vi håper på at været er på vår side og at vi kan nyte dagen ute."
     },
     {
-        id: 3,
+        id: 2,
+        headline: "Kleskode",
+        text: "Dress."
+    },
+    {   id: 3,     
+        headline: "Parkering",
+        text: "Mulighet for parkering på stedet"
+    },
+    {
+        id: 4,
         headline: "Servering",
-        text: "Det vil bli servert mat og drikke gjennom kvelden"
+        text: "Det vil bli servert mat og drikke gjennom dagen."
     }
     
 ]
@@ -115,8 +118,8 @@ const InfoSection : React.FC = () => {
                                         {day.events.map(event => (
                                             <li key={event.id} className="group py-6 px-2 sm:px-5 flex items-center">
                                             {/* :::time container */}
-                                            <div className="flex-shrink-0 mr-5 sm:mr-20 px-3 py-2 flex flex-col bg-white rounded-md">
-                                                <span className="text-sm sm:text-base font-ralewaRegular text-tertiary">{event.time}</span>
+                                            <div className="flex-shrink-0 mr-5 sm:mr-20 px-3 py-2 flex flex-col bg-tertiary rounded-md">
+                                                <span className="text-sm sm:text-base font-ralewaRegular text-white">{event.time}</span>
                                             </div>
                                             {/* :::details container */}
                                             <div className="col-span-7 sm:col-span-6 px-3">
@@ -200,7 +203,9 @@ const InfoSection : React.FC = () => {
                                     </div>
                                     <div>
                                         <p className="p text-white">
-                                            Vi vil tilby transport fra sentrum til Villa Lokøy på søndag 26. mai. Maxitaxi vil kjøre fra Festplassen kl. 13:00. Det vil også bli tilbudt transport tilbake til sentrum fra Villa Lokøy kl. 18:30. 
+                                            Vi vil tilby transport fra Skjoldskiftet til Villa Lokøy på søndag 26. mai. 
+                                            Maxitaxi vil kjøre fra bensinstasjonen i Skjoldskiftet kl. 13:00. 
+                                            Det vil også bli tilbudt transport tilbake til sentrum fra Villa Lokøy kl. 19:30. Det er også mulig å parkere på stedet for de som ønsker å kjøre selv. 
                                         </p>
                                     </div>
                                 </div>
