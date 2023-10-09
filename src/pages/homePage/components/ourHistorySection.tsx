@@ -14,7 +14,7 @@ const OurHistorySection : React.FC = () => {
                             duration={3000}
                             triggerOnce={true}>    
                             <div>
-                                <h2 className="mb-4 h2 text-primary">Vår Historie</h2>
+                                <h2 className="mb-4 h2 text-primary">Historien vår</h2>
                                 <p className="p mb-4 text-gray-500 ">En match på Happn førte til vår første date på Fløyen i august 2020. Etter noen måneder sammen, ble vi offisielt kjærester. Et halvt år senere bestemte oss for å kjøpe vårt drømmehus på Siljustøl. Mai 2022 ble vi samboere på Nygårdshøyden og november samme år overtok vi huset.  3. juli 2023 gikk Mats ned på kne og Anette sa JA.</p>
                                 <p className='p mb text-gray-500'>Vi ser frem til å skape et liv fylt med kjærlighet og minner sammen.</p>
                             </div>

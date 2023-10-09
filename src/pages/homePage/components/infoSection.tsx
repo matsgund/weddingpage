@@ -3,6 +3,9 @@ import { CalendarIcon } from '@heroicons/react/24/outline';
 import villaImage from '@/assets/images/jpg/villa.jpg';
 import GoogleMapRoute from '@/components/googleMap';
 import { Fade } from "react-awesome-reveal";
+import { HomeModernIcon } from '@heroicons/react/24/solid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUtensils, faParking, faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 const schedule = [
     {
@@ -61,19 +64,23 @@ const schedule = [
   const locationInfo = [
     {   id: 1,
         headline: "Sted",
+        icon: <HomeModernIcon className="w-6 h-6 text-white"/> ,
         text: "Vi har leid Villa Lokøy for anlednigen. Denne ligger vest for Bergen i Lokøyvågen 68. Vi håper på at været er på vår side og at vi kan nyte dagen ute."
     },
     {
         id: 2,
+        icon: <FontAwesomeIcon icon={faUserTie} className=' w-6 h-6 text-white' />,
         headline: "Kleskode",
         text: "Dress."
     },
-    {   id: 3,     
+    {   id: 3,
+        icon: <FontAwesomeIcon icon={faParking} className=' w-6 h-6 text-white' />,
         headline: "Parkering",
-        text: "Mulighet for parkering på stedet"
+        text: "Mulighet for parkering på stedet."
     },
     {
         id: 4,
+        icon: <FontAwesomeIcon icon={faUtensils} className=' w-6 h-6 text-white' />,
         headline: "Servering",
         text: "Det vil bli servert mat og drikke gjennom dagen."
     }
@@ -86,7 +93,7 @@ const InfoSection : React.FC = () => {
     return (
         <Element name="info">
             <div className="mx-auto py-12 lg:py-36 w-full max-w-7x bg-quaternary">
-                <div className="mx-auto max-w-4xl">
+                <div className="mx-auto max-w-4xl md:mb-32">
 
                     {/* :TITLE CONTAINER */}
                     <Fade 
@@ -153,9 +160,9 @@ const InfoSection : React.FC = () => {
                             triggerOnce={true}>
                                     {locationInfo.map((element) => (
                                         <div key={element.id} className="flex space-x-2 sm:space-x-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="flex-shrink-0 w-6 h-6">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-                                            </svg>
+                                            <div className="flex-shrink-0">
+                                               { element.icon}
+                                            </div>
                                             <div className="space-y-2">
                                                 <p className="text-lg font-ralewaRegular">{element.headline}</p>
                                                 <p className='font-ralewaRegular'>{element.text}</p>
@@ -187,31 +194,39 @@ const InfoSection : React.FC = () => {
                         </div>
                     </Fade>
 
-                    <Fade
-                        direction='right'
-                        duration={3000}
-                        triggerOnce={true}>                     
-                        <div className="p-5 mx-auto sm:p-10 md:p-16">
-                            <div className="flex flex-col max-w-3xl mx-auto overflow-hidden -md">
-                                <GoogleMapRoute/>
-                                {/* <img src="https://source.unsplash.com/random/480x360" alt="" className="w-full h-60 sm:h-96 " /> */}
-                                <div className="p-6 pb-12 m-4 mx-auto -mt-16 space-y-6 w-2/3 lg:rounded-md bg-tertiary ">
-                                    <div className="space-y-2">
-                                    <h4 className="h4 mb-4 tracking-tight text-white">
-                                    Transport søndag 26. mai
-                                    </h4>
-                                    </div>
-                                    <div>
-                                        <p className="p text-white z-10">
-                                            Vi vil tilby transport fra Skjoldskiftet til Villa Lokøy på søndag 26. mai. 
-                                            Maxitaxi vil kjøre fra bensinstasjonen i Skjoldskiftet kl. 13:00. 
-                                            Det vil også bli tilbudt transport tilbake til sentrum fra Villa Lokøy kl. 19:30. Det er også mulig å parkere på stedet for de som ønsker å kjøre selv. 
-                                        </p>
+                                     
+                        <div className="p-5 sm:p-10 md:p-16"> {/* Added relative positioning here */}
+                            <div className="flex flex-col max-w-3xl relative ">
+                                <Fade
+                                    direction='right'
+                                    duration={3000}
+                                    triggerOnce={true}>  
+                                    <GoogleMapRoute/>
+                                </Fade>
+                                <div className='flex justify-center'>
+                              
+                                        <div className="md:absolute bottom-[-11.5rem] md:w-2/3 z-10 p-6 pb-12 mt-4 rounded-md bg-tertiary"> 
+                                            <Fade
+                                                direction='right'
+                                                duration={3000}
+                                                triggerOnce={true}>  
+                                                <div>
+                                                    <h4 className="h4 mb-6 tracking-tight text-white rounded-md">
+                                                        Transport søndag 26. mai
+                                                    </h4>
+                                                </div>
+                                                <div>
+                                                    <p className="p text-white">
+                                                        Vi vil tilby transport fra Skjoldskiftet til Villa Lokøy på søndag 26. mai. 
+                                                        Maxitaxi vil kjøre fra bensinstasjonen i Skjoldskiftet kl. 13:00. 
+                                                        Det vil også bli tilbudt transport tilbake til sentrum fra Villa Lokøy kl. 19:30. Det er også mulig å parkere på stedet for de som ønsker å kjøre selv. 
+                                                    </p>
+                                                </div>
+                                        </Fade>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </Fade>
                 </div>      
             </div>
         </Element>

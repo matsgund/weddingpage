@@ -43,8 +43,8 @@ const HeroSection: React.FC = () => {
               </Fade>
             <div className="justify-center">
               <Fade 
-               
-                duration={6000}
+               direction='down'
+                duration={3000}
                 triggerOnce={true}>
                   <h2 className='h2 text-white py-4'>
                     25/26 Mai 2024
