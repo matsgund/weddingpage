@@ -20,7 +20,7 @@ const HeroSection: React.FC = () => {
   return (
     <div ref={ref} className='relative h-full w-full'>
       {/* Video Background */}
-    <div className="w-full h-full absolute top-0 right-0 bottom-0 left-0 z-10">
+    <div className="w-full h-full absolute top-0 right-0 bottom-0 left-0 z-10 bg-black">
         <video aria-hidden="true" 
           className="relativ z-20 h-full w-full object-cover pointer visible opacity-80" 
           autoPlay={true} 

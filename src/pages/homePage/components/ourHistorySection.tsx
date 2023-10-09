@@ -1,6 +1,6 @@
 import { Element } from 'react-scroll';
-import image1 from '@/assets/images/jpg/test1.webp';
-import image2 from '@/assets/images/jpg/test2.webp';
+import image1 from '@/assets/images/jpg/ourStoryImage1.webp';
+import image2 from '@/assets/images/jpg/ourStoryImage2.webp';
 import { Fade } from "react-awesome-reveal";
 
 const OurHistorySection : React.FC = () => {
@@ -24,8 +24,8 @@ const OurHistorySection : React.FC = () => {
                             duration={3000} 
                             triggerOnce={true}>    
                             <div className="grid grid-cols-2 gap-4 mt-8">
-                                <img className="w-full rounded-lg" src={image1} alt="office content 1"/>
-                                <img className="mt-4 w-full lg:mt-10 rounded-md" src={image2} alt="office content 2"/>
+                                <img className="w-full rounded-lg" src={image2} alt="office content 1"/>
+                                <img className="mt-4 w-full lg:mt-10 rounded-md" src={image1} alt="office content 2"/>
                             </div> 
                         </Fade>
                     </div>  
