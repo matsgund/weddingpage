@@ -26,7 +26,7 @@ const WishListSection : React.FC = () => {
                                 <div className="-mt-1 font-sans text-sm font-semibold">Kitchen</div>
                             </div>
                         </a>
-                        <a href="#" className="w-full sm:w-auto bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-md inline-flex items-center justify-center px-4 py-2.5">
+                        <a href="https://www.tilbords.no/onskeliste/123312" className="w-full sm:w-auto bg-primary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-md inline-flex items-center justify-center px-4 py-2.5">
                             <GiftIcon className="mr-3 w-7 h-7"/>
                             <div className="text-left">
                                 <div className="mb-1 text-xs">Ønskeliste</div>
