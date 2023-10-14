@@ -1,81 +1,69 @@
 import { Element } from 'react-scroll';
 import PhotoAlbum from "react-photo-album";
-import photo1 from "@/assets/gallery/DJI_0026.webp";
-import photo2 from "@/assets/gallery/DJI_0029.webp";
-import photo3 from "@/assets/gallery/DJI_0036.webp";
-import photo4 from "@/assets/gallery/IMG_4747.webp";
-import photo5 from "@/assets/gallery/IMG_8427.webp";
-import photo6 from "@/assets/gallery/IMG_8435.webp";
-import photo7 from "@/assets/gallery/IMG_8586.webp";
-import photo8 from "@/assets/gallery/IMG_8757.webp";
-import photo9 from "@/assets/gallery/IMG_8903.webp";
-import photo10 from "@/assets/gallery/IMG_8982.webp";
-import photo11 from "@/assets/gallery/IMG_8989.webp";
 import { Fade } from 'react-awesome-reveal';
+import useSanity from '@/hooks/useSanity';
+import imageUrlBuilder from '@sanity/image-url';
+import sanityClient from '@/sanityClient.config';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
-const photos = [
-    {
-      src: photo1,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo2,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo3,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo4,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo5,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo6,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo7,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo8,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo9,
-      width: 4,
-      height: 3
-    },
-    {
-      src: photo10,
-      width: 3,
-      height: 4
-    },
-    {
-      src: photo11,
-      width: 4,
-      height: 3
-    },
-];
+interface Image {
+  url: string,
+  metadata: {
+    dimensions: {
+      width: number,
+      height: number
+    }
+  }
+}
 
+interface Gallery {
+  title: string,
+  subHeading: string,
+  images: Image[],
+  display: string,
+  zoom: string
+}
+
+
+const builder = imageUrlBuilder(sanityClient);
+
+function urlFor(source: SanityImageSource) {
+  return builder.image(source);
+}
+
+const getPhotosWithRatio = (gallery: Gallery) => {
+  if (!gallery) return [];
+  if (!gallery.images) return [];
+  return gallery.images.map(image => {
+    const aspectRatio = image.metadata.dimensions.width / image.metadata.dimensions.height;
+    return {
+      src: urlFor(image.url).width(800).url(),  // or whatever width you prefer
+      width: aspectRatio > 1 ? aspectRatio : 1,
+      height: aspectRatio > 1 ? 1 : 1 / aspectRatio,
+    };
+  });
+}
 
 const GallerySection : React.FC = () => {
 
-    return (
-        <Element name="gallery">
+  const query = `*[_type == "gallery"]{
+    title,
+    subHeading,
+    "images": images[].asset->{
+      url,
+      metadata { dimensions }
+    },
+    display,
+    zoom
+  }`;
+ 
+  const { data } =  useSanity<Gallery[]>(query);
+  const gallerySection = data ? data[0] : undefined;
+  const photos = gallerySection ? getPhotosWithRatio(gallerySection) : [];
+
+
+  return (
+    <Element name="gallery">
             <div className="bg-quaternary mx-auto py-12 px-4 lg:py-36 w-full max-w-7x">
               <Fade
                 direction="left"
@@ -83,9 +71,9 @@ const GallerySection : React.FC = () => {
                 triggerOnce={true}>
                   <div className="mx-auto max-w-2xl text-center">
                           <h2 className="mb-4 text-4xl tracking-tight text-white font-cmunrm">
-                              Bildegalleri
+                             {gallerySection?.title}
                           </h2>
-                          <p className="p text-gray-200 font-bold uppercase">Her kommer bildene fra vielsen og festen</p>
+                          <p className="p text-gray-200 font-bold uppercase">{gallerySection?.subHeading.toUpperCase()}</p>
                   </div>
               </Fade>
               <Fade
@@ -98,9 +86,9 @@ const GallerySection : React.FC = () => {
               </Fade>
             </div>
         </Element>
-    )
-
-}
-
+  );
+};
 
 export default GallerySection;
+
+
