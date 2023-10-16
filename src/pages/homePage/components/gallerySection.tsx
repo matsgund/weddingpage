@@ -1,10 +1,21 @@
 import { Element } from 'react-scroll';
-import PhotoAlbum from "react-photo-album";
+import React, { useState } from 'react';
+import PhotoAlbum, { LayoutType } from "react-photo-album";
 import { Fade } from 'react-awesome-reveal';
 import useSanity from '@/hooks/useSanity';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from '@/sanityClient.config';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+
 
 interface Image {
   url: string,
@@ -37,14 +48,25 @@ const getPhotosWithRatio = (gallery: Gallery) => {
   return gallery.images.map(image => {
     const aspectRatio = image.metadata.dimensions.width / image.metadata.dimensions.height;
     return {
-      src: urlFor(image.url).width(800).url(),  // or whatever width you prefer
+      src: urlFor(image.url).width(800).url(),  
       width: aspectRatio > 1 ? aspectRatio : 1,
       height: aspectRatio > 1 ? 1 : 1 / aspectRatio,
+      srcSet: [
+        { 
+          src: urlFor(image.url).width(1440).url(),
+          width: 1440,  
+          height: Math.round(1440 / aspectRatio) 
+        },
+      ],
     };
   });
 }
 
+
+
 const GallerySection : React.FC = () => {
+
+  const [index, setIndex] = useState(-1);
 
   const query = `*[_type == "gallery"]{
     title,
@@ -60,6 +82,7 @@ const GallerySection : React.FC = () => {
   const { data } =  useSanity<Gallery[]>(query);
   const gallerySection = data ? data[0] : undefined;
   const photos = gallerySection ? getPhotosWithRatio(gallerySection) : [];
+  const display = gallerySection?.display as LayoutType || 'columns';
 
 
   return (
@@ -81,7 +104,14 @@ const GallerySection : React.FC = () => {
                 duration={3000}
                 triggerOnce={true}>
                   <div className='mx-auto my-12 sm:my-20 sm:w-2/3'>
-                      <PhotoAlbum layout="columns" photos={photos} />
+                      <PhotoAlbum layout={display} photos={photos} targetRowHeight={150} onClick={({ index }) => setIndex(index)} />
+                      <Lightbox 
+                          slides={photos}
+                          open={index >= 0}
+                          index={index}
+                          close={() => setIndex(-1)}
+                          plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+                      />
                   </div>
               </Fade>
             </div>
