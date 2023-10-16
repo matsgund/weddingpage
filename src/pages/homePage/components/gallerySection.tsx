@@ -100,7 +100,7 @@ const GallerySection : React.FC = () => {
                   </div>
               </Fade>
               <Fade
-                direction="right"
+                direction="up"
                 duration={3000}
                 triggerOnce={true}>
                   <div className='mx-auto my-12 sm:my-20 sm:w-2/3'>
