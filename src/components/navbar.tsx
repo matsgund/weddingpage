@@ -56,7 +56,7 @@ const Navbar : React.FC = () => {
                         <div className="flex lg:hidden">
                             <button
                             type="button"
-                            className="-m-2.5 inline-flex items-center  outline-none justify-center rounded-md p-2.5 text-white"
+                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
                             onClick={() => setMobileMenuOpen(true)}
                             >
                             <span className="sr-only">Open main menu</span>
@@ -96,7 +96,7 @@ const Navbar : React.FC = () => {
                     <div className="fixed inset-0 z-50" />
                         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-12 py-12 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                             <div className="flex items-center justify-between">
-                                <a href="#" className="-m-1.5 p-1.5 flex ">
+                                <a href="#" className="-m-1.5 p-1.5 flex outline-none ">
                                     <span className="sr-only">Icon</span>
                                     <span className="font-cmunrm self-center text-3xl flex gap-3">
                                         Anette 
