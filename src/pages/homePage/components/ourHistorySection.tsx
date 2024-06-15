@@ -3,6 +3,7 @@ import { Fade } from "react-awesome-reveal";
 import useSanity from '@/hooks/useSanity';
 import { PortableTextBlock } from '@portabletext/types';
 import { PortableText } from '@portabletext/react';
+import { Hearts } from 'react-loader-spinner';
 
 
 
@@ -37,7 +38,16 @@ const OurHistorySection : React.FC = () => {
                             duration={3000}
                             triggerOnce={true}>    
                             <div>
-                                <h2 className="mb-4 h2 text-primary"> {title} </h2>
+                            <h2 className="mb-4 h2 text-primary flex items-center">
+                                    {title}
+                                    <span className='ml-4'></span>  
+                                    <Hearts
+                                        height="60"
+                                        width="60"
+                                        color="#7c9b88"
+                                        ariaLabel="loading"
+                                    /> 
+                                </h2>
                                 <div id='sanity-portable' className="p mb-4 text-gray-500">
                                     <PortableText value={sectionText} />
                                 </div>
