@@ -6,6 +6,7 @@ import useSanity from '@/hooks/useSanity';
 import imageUrlBuilder from '@sanity/image-url';
 import sanityClient from '@/sanityClient.config';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { ShareIcon } from '@heroicons/react/24/outline';
 
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -15,6 +16,7 @@ import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
+
 
 
 interface Image {
@@ -30,6 +32,7 @@ interface Image {
 interface Gallery {
   title: string,
   subHeading: string,
+  galleryUrl: string,
   images: Image[],
   display: string,
   zoom: string
@@ -71,6 +74,7 @@ const GallerySection : React.FC = () => {
   const query = `*[_type == "gallery"]{
     title,
     subHeading,
+    galleryUrl,
     "images": images[].asset->{
       url,
       metadata { dimensions }
@@ -96,7 +100,13 @@ const GallerySection : React.FC = () => {
                           <h2 className="mb-4 text-4xl tracking-tight text-white font-cmunrm">
                              {gallerySection?.title}
                           </h2>
-                          <p className="p text-gray-200 font-bold uppercase">{gallerySection?.subHeading.toUpperCase()}</p>
+                          <p className="p text-gray-200 font-bold uppercase">{gallerySection?.subHeading}</p>
+                          <a 
+                            className='p text-gray-200 font-bold underline underline-offset-8 inline-flex items-center mt-2' 
+                            href={gallerySection?.galleryUrl}>
+                            Hele fotoalbumet tilgjengelig her
+                            <ShareIcon className="h-4 w-4 ml-2 text-gray-200" />
+                            </a>
                   </div>
               </Fade>
               <Fade

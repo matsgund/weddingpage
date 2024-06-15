@@ -16,9 +16,9 @@ interface NavigationItem {
 }
 
 const navigation : Array<NavigationItem> = [
-  { name: 'Vår historie', link: '/our-history', offset:-120 },
-  { name: 'Praktisk informasjon', link: '/info', offset:-120 }, 
-  { name: 'Ønskeliste', link: '/wish-list', offset:-120 },
+//   { name: 'Takk!', link: '/our-history', offset:-120 },
+//   { name: 'Praktisk informasjon', link: '/info', offset:-120 }, 
+//   { name: 'Ønskeliste', link: '/wish-list', offset:-120 },
   { name: 'Galleri', link: '/gallery', offset:-120 },
 ]
 
@@ -81,10 +81,10 @@ const Navbar : React.FC = () => {
                             ))}
                         </div>
                         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                            <Button 
+                            {/* <Button 
                                 onClick={() => setGoogleFormModalOpen(true)}>
                                 Påmelding
-                            </Button> 
+                            </Button>  */}
                         </div>
                     </nav>
                 </Transition.Root>
@@ -147,13 +147,13 @@ const Navbar : React.FC = () => {
                                         ))}
                                     </div>
                                     <div className="py-6">
-                                        <span
+                                        {/* <span
                                             onClick={() => {setMobileMenuOpen(false); setGoogleFormModalOpen(true);}}   
                                             className="-mx-3 block rounded-md px-3 py-2.5 text-base font-ralewaRegular font-medium leading-7 text-gray-900 hover:text-primary"
                                             
                                         >
                                            Påmelding
-                                        </span>
+                                        </span> */}
                                     
                                 </div>
                             </div>

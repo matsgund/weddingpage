@@ -13,10 +13,10 @@ const HomePage: React.FC = () => {
             <Navbar/>
             <HeroSection/>
             <OurHistorySection/>
-            <InfoSection/>
-            <WishListSection/>
+            {/* <InfoSection/> */}
+            {/* <WishListSection/> */}
             <GallerySection/>
-            <SignUpSection/>
+            {/* <SignUpSection/> */}
             <Foooter/>
             {/* our story */}
             {/* our story images and text */}

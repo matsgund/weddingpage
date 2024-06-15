@@ -1,10 +1,33 @@
 import { Element } from 'react-scroll';
-import image1 from '@/assets/images/jpg/ourStoryImage1.webp';
-import image2 from '@/assets/images/jpg/ourStoryImage2.webp';
 import { Fade } from "react-awesome-reveal";
+import useSanity from '@/hooks/useSanity';
+import { PortableTextBlock } from '@portabletext/types';
+import { PortableText } from '@portabletext/react';
+
+
 
 const OurHistorySection : React.FC = () => {
 
+    interface OurHistory {
+        title: string;
+        sectionText: PortableTextBlock[]; // Assuming 'blockContent' can be of any type or a specific rich text type
+        picture1Url: string;
+        picture2Url: string;
+      }
+
+    const query = `*[_type == "ourHistory"]{
+        title,
+        sectionText,
+        "picture1Url": picture1.asset->url,
+        "picture2Url": picture2.asset->url
+      }`;
+     
+      const { data, error, loading } =  useSanity<OurHistory[]>(query);
+
+        if (loading) return <div>Loading...</div>;
+        if (error) return <div>{error}</div>;
+        if (!data) return <div>No data</div>;
+        const { title, sectionText, picture1Url, picture2Url } = data[0];
     return (
        <Element name="our-history">
             <section className={`bg-white`}>
@@ -14,9 +37,10 @@ const OurHistorySection : React.FC = () => {
                             duration={3000}
                             triggerOnce={true}>    
                             <div>
-                                <h2 className="mb-4 h2 text-primary">Historien vår</h2>
-                                <p className="p mb-4 text-gray-500 ">En match på Happn førte til vår første date på Fløyen i august 2020. Etter noen måneder sammen, ble vi offisielt kjærester. Et halvt år senere bestemte oss for å kjøpe vårt drømmehus på Siljustøl. Mai 2022 ble vi samboere på Nygårdshøyden og november samme år overtok vi huset.  3. juli 2023 gikk Mats ned på kne og Anette sa JA.</p>
-                                <p className='p mb text-gray-500'>Vi ser frem til å skape et liv fylt med kjærlighet og minner sammen.</p>
+                                <h2 className="mb-4 h2 text-primary"> {title} </h2>
+                                <div id='sanity-portable' className="p mb-4 text-gray-500">
+                                    <PortableText value={sectionText} />
+                                </div>
                             </div>
                         </Fade>
                         <Fade 
@@ -24,8 +48,8 @@ const OurHistorySection : React.FC = () => {
                             duration={3000} 
                             triggerOnce={true}>    
                             <div className="grid grid-cols-2 gap-4 mt-8">
-                                <img className="w-full rounded-lg" src={image2} alt="office content 1"/>
-                                <img className="mt-4 w-full lg:mt-10 rounded-md" src={image1} alt="office content 2"/>
+                                <img className="mt-4 w-full lg:mt-10 rounded-md" src={picture2Url} alt="office content 2"/>
+                                <img className="w-full rounded-lg" src={picture1Url} alt="office content 1"/>
                             </div> 
                         </Fade>
                     </div>  
